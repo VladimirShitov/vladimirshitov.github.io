@@ -1,0 +1,113 @@
+body {
+	background-color: #f3f5f7;
+}
+
+.top {
+	margin-top: 56px;
+}
+
+.top .caption p {
+	font-size: 1.857em;
+	font-weight: 400;
+	line-height: 2.766;
+	transform: scaleY(1.01);
+}
+
+.strong-text {
+	font-family: Arvo;
+	color:  #3b3e6a;
+	font-size: 22px;
+	font-weight: 400;
+	text-align: center;
+}
+
+.light-text {
+	font-family: NotoSans;
+	color:  #686b8b;
+	font-size: 1.25em;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+}
+
+.content {
+	margin-top: 113px;
+}
+
+img {
+	position: absolute;
+}
+
+.illustration {
+	height: 137px;
+}
+
+.block-1 .illustration .car {
+	margin-left: 38px;
+	margin-top: 93px;
+}
+
+.block-1 .illustration .gold {
+	margin-left: 74px;
+	margin-top: 63px;
+}
+
+.block-1 .illustration .crane {
+	margin-left: 122px;
+}
+
+.content .strong-text {
+	margin-top: 54px;
+}
+
+.block-2 .illustration .case {
+	margin-left: 65px;
+	margin-top: 19px;
+}
+
+.block-2 .illustration .gold {
+	height: 41px;
+	margin-left: 86px;
+	margin-top: 82px;
+}
+
+.block-2 .illustration .calc {
+	margin-left: 137px;
+	margin-top: 24px;
+}
+
+.block-3 .illustration .bungalo {
+	margin-left: 61px;
+	margin-top: 40px;
+}
+
+.block-3 .illustration .gold {
+	height: 61px;
+	margin-left: 34px;
+	margin-top: 98px;
+}
+
+.block-4 .illustration .umbrella {
+	margin-left: 73px;
+	margin-top: 19px;
+}
+
+.block-4 .illustration .umbrella-logo {
+	margin-left: 124px;
+	margin-top: 45px;
+}
+
+.block-4 .illustration .car-wash {
+	margin-left: 95px;
+	margin-top: 97px;
+}
+
+.block-4 .illustration .cloud {
+	margin-left: 189px;
+	margin-top: 45px;
+}
+
+.block-4 .illustration .calc {
+	margin-left: 95px;
+	margin-top: 97px;
+}

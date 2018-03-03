@@ -1,0 +1,46 @@
+body {
+	background-color: #E6E6FA;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: none;
+	color: inherit;
+}
+
+.caption {
+	text-align: center;
+	color: #2F4F4F;
+	margin-top: 30px;
+}
+
+.description {
+	text-align: center;
+	color: #778899;
+	margin-top: 10px;
+}
+
+.content {
+	margin-top: 50px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 20px;
+}
+
+.content .lesson {
+	height: 50px;
+}
+
+.content .lesson:hover {
+	background-color: #00BFFF;
+	color: white;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
