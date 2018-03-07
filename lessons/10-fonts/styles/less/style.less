@@ -1,0 +1,132 @@
+@span-color: rgba(252, 103, 68, 0.8);
+@text-dark: rgba(0, 0, 0, 0.8);
+@text-light: rgba(65, 65, 65, 0.7);
+@block-text: rgba(255, 255, 255, 0.8);
+@plus-color: rgba(0, 0, 0, 0.5);
+
+.block-style {
+	margin-top: 80px;
+	height: 263px;
+	box-shadow: 0px 0px 35px 0px rgba(20, 20, 21, 0.21);
+	color: @block-text;
+	text-align: center;
+	.icon {
+		font-family: 'FontAwesome';
+		padding-top: 53px;
+		font-size: 50px;
+		font-weight: 400;
+		line-height: 8px;
+	}
+	h2 {
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 42px;
+	}
+	p {
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 22px;
+	}
+	.know-btn {
+		border-radius: 27px;
+		background-color:  #ffffff;
+		box-shadow: 3px 5px 14px 0px rgba(20, 20, 21, 0.09);
+		width: 228px;
+		height: 55px;
+		border: none;
+		bottom: 0;
+		margin-top: 20px;
+		color: rgba(0, 0, 0, 0.5);
+		p {
+			line-height: 54px;
+		}
+		span {
+			margin-left: 8px;
+			color:  rgba(0, 0, 0, 0.8);
+			font-size: 16px;
+			font-weight: 400;
+		}
+		/* Large desktops and laptops */
+		@media only screen and (min-width: 1200px) {
+			
+		}
+
+		/* Portrait tablets and medium desktops */
+		@media only screen and (min-width: 992px) and (max-width: 1199px) {
+			margin-top: 42px;
+		}
+
+		/* Portrait tablets and small desktops */
+		@media only screen and (min-width: 768px) and (max-width: 991px) {
+			
+		}
+
+		/* Landscape phones and portrait tablets */
+		@media only screen and (max-width: 767px) {
+			margin-top: 20px;
+		}
+
+		/* Landscape phones and smaller */
+		@media only screen and (max-width: 575px) {
+			margin-top: 42px;
+		}
+		@media only screen and (max-width: 392px) {
+			margin-top: 20px;
+		}
+	}
+}
+
+body {
+	font-size: 10px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.header {
+	text-align: center;
+	padding-top: 86px;
+	h1 {
+		color: @text-dark;
+		font-size: 50px;
+		font-weight: 600;
+		line-height: 45.739px;
+		span {
+			color: @span-color;
+		}
+	}
+	p {
+		color: @text-light;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		margin-top: 20px;
+	}
+}
+
+.block-1 {
+	.base {
+		.block-style;
+	background-color: #4eb2f7;
+	}
+}
+
+.block-2 {
+	.base {
+		.block-style;
+	background-color: #c049f8;
+	}
+}
+
+.block-3 {
+	.base {
+		.block-style;
+	background-color: #817eff;
+	}
+}
+
+.block-4 {
+	.base {
+		.block-style;
+	background-color: #f74770;
+	}
+}
+
