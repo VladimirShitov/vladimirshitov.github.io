@@ -1,0 +1,30 @@
+@bor-color: #939393;
+@dark-color: #110e7c;
+@light-color: #3db8f5;
+@box-size: 46px;
+
+* {
+	margin: 0;
+}
+
+.container {
+	background: url(../images/bg.jpg) no-repeat center center;
+	.table {
+		padding: 0.4% 17%;
+	}
+}
+
+.cell {
+	border: 1px solid @bor-color;
+	width: @box-size;
+	height: @box-size;
+	display: inline-block;
+	margin: 0;
+	display: table-cell;
+	&.dark {
+		background-color: @dark-color;
+	}
+	&.light {
+		background-color: @light-color;
+	}
+}
