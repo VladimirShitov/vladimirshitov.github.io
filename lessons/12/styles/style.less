@@ -1,0 +1,49 @@
+a {
+	text-decoration: none;
+	color: #454545;
+	&:hover {
+		text-decoration: none;
+	}
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+.open-btn {
+	font-size: 30px;
+	position: fixed;
+	left: 5%;
+	top: 2%;
+}
+
+.popup {
+	position: fixed;
+	z-index: 1000;
+	top: 2%;
+}
+
+.menu {
+	position: fixed;
+	background-color: #fff;
+	display: none;
+	&:target {
+		display: block;
+	}
+	.popup-menu {
+		li {
+			list-style-type: none;
+			font-size: 20px;
+			line-height: 40px;
+		}
+	}
+}
+
+.popup-overlay {
+	background-color: white;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	&:target {
+		display: block;
+	}
+}
