@@ -1,0 +1,91 @@
+@basic-color: #03A9F4;
+@block-color: #fff;
+@button-color: #8BC34A;
+@light-color: #B3E5FC;
+@paragraph-color: #BDBDBD;
+@white: #fff;
+
+.block-shadow {
+	-webkit-box-shadow: 0 10px 50px -5px lighten(#BDBDBD, 20%);
+	box-shadow: 0 10px 50px -5px lighten(#BDBDBD, 10%);
+}
+
+body {
+	text-align: center;
+	background-color: @basic-color;
+}
+
+a:hover, a:focus, a:active {
+	text-decoration: none;
+	color: inherit;
+}
+button:focus, input:focus, a:focus, textarea:focus {
+	outline: none;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+}
+
+.content {
+	padding-top: 30px;
+	h1 {
+		display: inline-block;
+		color: @white;
+	}
+	h2 {
+		margin-top: 20px;
+		color: @light-color;
+	}
+	p {
+		margin-top: 10px;
+		color: @light-color;
+	}
+}
+
+.block {
+	margin-top: 40px;
+	.block-content {
+		background-color: @block-color;
+		border-radius: 30px;
+		height: 300px;
+		padding-top: 5%;
+		position: relative;
+		overflow: hidden;
+		.block-shadow;
+	}
+	h6 {
+		font-size: 1.5em;
+	}
+	p {
+		margin-top: 5%;
+		font-size: 0.8em;
+		color: @paragraph-color;
+	}
+	img {
+		margin-top: 10%;
+		height: 33%;
+	}
+	.go-btn {
+		width: 100%;
+		background-color: @button-color;
+		position: absolute;
+		bottom: 10%;
+		height: 30px;
+	}
+	a {
+		color: @white;
+	}
+	.hover-me {
+		margin: 10% auto;
+		height: 15%;
+		background-color: #212121;
+		width: 50%;
+		color: @white;
+		transition: all 2s;
+		font-size: 1.5em;
+		&:hover {
+			width: 100%;
+			background-color: #B3E5FC;
+		}
+	}
+}
