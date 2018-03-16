@@ -1,0 +1,478 @@
+@font-face {
+    font-family: 'P22 Underground CY Pro';
+    src: url('../fonts/P22UndergroundCYPro-Thin.eot');
+    src: url('../fonts/P22UndergroundCYPro-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/P22UndergroundCYPro-Thin.woff2') format('woff2'),
+        url('../fonts/P22UndergroundCYPro-Thin.woff') format('woff'),
+        url('../fonts/P22UndergroundCYPro-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'P22 Underground CY Pro';
+    src: url('../fonts/P22UndergroundCYPro-Heavy.eot');
+    src: url('../fonts/P22UndergroundCYPro-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/P22UndergroundCYPro-Heavy.woff2') format('woff2'),
+        url('../fonts/P22UndergroundCYPro-Heavy.woff') format('woff'),
+        url('../fonts/P22UndergroundCYPro-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'P22 Underground CY Pro';
+    src: url('../fonts/P22UndergroundCYPro-Demi.eot');
+    src: url('../fonts/P22UndergroundCYPro-Demi.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/P22UndergroundCYPro-Demi.woff2') format('woff2'),
+        url('../fonts/P22UndergroundCYPro-Demi.woff') format('woff'),
+        url('../fonts/P22UndergroundCYPro-Demi.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'P22 Underground CY Pro';
+    src: url('../fonts/P22UndergroundCYPro-Medium.eot');
+    src: url('../fonts/P22UndergroundCYPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/P22UndergroundCYPro-Medium.woff2') format('woff2'),
+        url('../fonts/P22UndergroundCYPro-Medium.woff') format('woff'),
+        url('../fonts/P22UndergroundCYPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'P22 Underground CY Pro';
+    src: url('../fonts/P22UndergroundCYPro-Book.eot');
+    src: url('../fonts/P22UndergroundCYPro-Book.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/P22UndergroundCYPro-Book.woff2') format('woff2'),
+        url('../fonts/P22UndergroundCYPro-Book.woff') format('woff'),
+        url('../fonts/P22UndergroundCYPro-Book.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@light-color: #fff;
+@basic-color: #ffff33;
+@dark-text-color: #333333;
+@dark-color: #303030;
+@block-2-color: #fcfcfc;
+
+html {
+	font-size: 10px;
+}
+
+body {
+	font-family: 'P22 Underground CY Pro', sans-serif;
+}
+
+.header {
+	background: url(../images/header-bg.jpg) no-repeat center center;
+	background-size: cover;
+	position: relative;
+	height: auto;
+	padding-bottom: 5rem;
+	.topbar {
+		padding-top: 5rem;
+		img {
+			display: inline-block;
+		}
+		h6, p {
+			display: block;
+		}
+		h6 {
+			color: @light-color;
+			font-size: 1.8rem;
+			font-weight: 800;
+			line-height: 1.6rem;
+		}
+		.text {
+			padding-top: 0.6rem;
+			padding-left: 3rem;			
+		}
+		.left-text {
+			color:  @light-color;
+			font-size: 1.2rem;
+			font-weight: 100;
+			line-height: 1.6rem;
+		}
+
+		.call-btn {
+			border: none;
+			background-color: transparent;
+			border-radius: 0.4rem;
+			border: 1px solid @light-color;
+			width: 16rem;
+			height: 4.9rem;
+			color: @light-color;
+			font-size: 1.5rem;
+			font-weight: 100;
+		}
+
+		.phone {
+			color: @light-color;
+			font-size: 2.3rem;
+			font-weight: 800;
+			text-align: right;
+			line-height: 4.9rem;
+		}
+	}
+	.header-content {
+		h1 {
+			margin-top: 4.8rem;
+			color: @basic-color;
+			font-size: 3.4rem;
+			font-weight: 800;
+			line-height: 45px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		.list {
+			margin-top: 21.3rem;
+			color:  @light-color;
+			font-size: 2rem;
+			font-weight: 300;
+			line-height: 1.75;
+			list-style-image: url(../images/icon-list.png);
+		}
+		.consultation {
+			margin-top: 5.3rem;
+			width: 42.0rem;
+			height: 41.3rem;
+			background-color: @light-color;
+			text-align: center;
+			h6 {
+				width: 80%;
+				margin: auto;
+				padding-top: 5rem;
+				padding-bottom: 5rem;
+				color: @dark-text-color;
+				font-size: 2.2rem;
+				font-weight: 300;
+				line-height: 1.136;
+				font-weight: bold;
+			}
+			input {
+				height: 5.9rem;
+				width: 80%;
+				margin-bottom: 1rem;
+				outline: none;
+				border-radius: 4px;
+				border: solid 1px @dark-text-color;
+				padding-left: 6.5rem;
+				color:  @dark-text-color;
+				font-size: 1.5rem;
+				font-weight: 300;
+				line-height: 3;
+				text-align: left;
+				font-weight: bold;
+			}
+			.input-name {
+				background: url(../images/input-name.png) no-repeat 0px;
+			}
+			.input-phone {
+				background: url(../images/input-phone.png) no-repeat 0px;
+			}
+			.consult-btn {
+				background-color: @basic-color;
+				padding: 0;
+				color: @dark-text-color;
+				font-size: 1.5rem;
+				font-weight: 300;
+				line-height: 3;
+				text-align: center;
+				font-weight: bold;
+				border: none;
+			}
+		}
+	}
+	.money {
+		width: 257px;
+		height: 158px;
+		bottom: 0;
+		position: absolute;
+		margin-bottom: -79px;
+		margin-left: 30%;
+	}
+}
+
+.block-1 {
+	.features {
+		margin-top: 10rem;
+		text-align: center;
+		.feature {
+			width: 8rem;
+			height: 8rem;
+			border-radius: 50%;
+			background-color: @basic-color;
+			margin: 5.8rem auto;
+			margin-bottom: 0;
+		}
+		p {
+			color: @dark-text-color;
+			font-size: 1.8rem;
+			font-weight: 300;
+			line-height: 1.222;
+			text-align: center;
+			font-weight: bold;
+			margin-top: 2.8rem;
+		}
+		.feature-1 {
+			background: url(../images/features-1.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-2 {
+			background: url(../images/features-2.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-3 {
+			background: url(../images/features-3.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-4 {
+			background: url(../images/features-4.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-5 {
+			background: url(../images/features-5.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-6 {
+			background: url(../images/features-6.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-7 {
+			background: url(../images/features-7.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-8 {
+			background: url(../images/features-8.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-9 {
+			background: url(../images/features-9.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+		.feature-10 {
+			background: url(../images/features-10.png) no-repeat center center;
+			background-color: @basic-color;
+		}
+	}
+}
+
+.block-2 {
+	height: auto;
+	background-color: @block-2-color;
+	margin-top: 10rem;
+	.steps {
+		display: flex;
+		justify-content: space-around;
+		padding-top: 9.4rem;
+		.line {
+			margin-top: 13.1rem;
+			width: 72%;
+			background-color: @basic-color;
+			height: 1px;
+			position: absolute;
+		}
+		.step {
+			width: 15%;
+		}
+		.digits {
+			color: @basic-color;
+			font-size: 10rem;
+			font-weight: 800;
+			text-align: center;
+		}
+		.point {
+			width: 13px;
+			height: 13px;
+			border-radius: 50%;
+			background-color: @basic-color;
+			margin: 0 auto;
+		}
+		.step-text {
+			margin-top: 3.5rem;
+			text-align: center;
+			color: @dark-text-color;
+			font-size: 1.8rem;
+			font-weight: 300;
+			line-height: 1.111;
+			font-weight: bold;
+		}
+	}
+	.consultation-bottom {
+		height: 158px;
+		background-color: @dark-color;
+		width: 80%;
+		margin: 4.6rem auto;
+		text-align: center;
+		padding-top: 5%;
+		border-radius: 0.5rem;
+		input {
+				height: 5.9rem;
+				width: 30%;
+				outline: none;
+				border-radius: 4px;
+				border: solid 1px @light-color;
+				padding-left: 6.5rem;
+				color: @light-color;
+				font-size: 1.5rem;
+				font-weight: 300;
+				line-height: 3;
+				text-align: left;
+				font-weight: bold;
+				margin-right: 1rem;
+			}
+			.input-name {
+				background: url(../images/input-name-light.png) no-repeat 0px;
+			}
+			.input-phone {
+				background: url(../images/input-phone-light.png) no-repeat 0px;
+			}
+			.consult-btn {
+				background-color: @basic-color;
+				padding: 0;
+				color: @dark-text-color;
+				font-size: 1.5rem;
+				font-weight: 300;
+				line-height: 3;
+				text-align: center;
+				font-weight: bold;
+				border: none;
+			}
+	}
+}
+
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.header {
+		.topbar {
+			.phone {
+				font-size: 1.7rem;
+			}
+		}
+	}
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+	.header {
+		.topbar {
+			.phone {
+				font-size: 1.7rem;
+			}
+		}
+	}
+	.header-content {
+		.consultation {
+			margin: auto;
+		}
+	}
+	.money {
+		margin-left: 24%;
+	}
+	.block-2 {
+		.consultation-bottom {
+			padding-bottom: 3rem;
+			height: auto;
+			text-align: center;
+			input {
+				width: 80%;
+				display: block;
+				margin: 7px auto;
+			}
+		}
+	}
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+	.header {
+		.topbar {
+			.text {
+				text-align: right;
+			}
+		}
+		.consultation {
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.money {
+			margin-left: 20%;
+		}
+	}
+	.block-2 {
+		.steps {
+			flex-direction: column;
+			align-items: center;
+			padding-top: 5rem;
+			.line {
+				display: none;
+			}
+			.step {
+				margin-top: 2rem;
+				width: 80%;
+				border-bottom: 1px solid @basic-color;
+			}
+		}
+		.consultation-bottom {
+			padding-bottom: 3rem;
+			height: auto;
+			text-align: center;
+			input {
+				width: 80%;
+				display: block;
+				margin: 7px auto;
+			}
+		}
+	}
+}
+
+@media (max-width: 575px) {
+	.header {
+		.topbar {
+			text-align: center;
+			.text, .phone {
+				text-align: center;
+				margin: 0.5rem;
+			}
+		}
+	}
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+	.header {
+		.header-content {
+			.consultation {
+			width: 100%;
+			}
+		}
+		.money {
+			width: 50%;
+			height: auto;
+			margin-bottom: -50px;
+		}
+	}
+
+	.block-2 {
+		.consultation-bottom {
+			padding-bottom: 3rem;
+			height: auto;
+			text-align: center;
+			input {
+				width: 80%;
+				display: block;
+				margin: 7px auto;
+			}
+		}
+	}	
+}
