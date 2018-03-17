@@ -88,7 +88,7 @@
                 <h6>Вёрстка на Flex</h6>
                 <p>Обучение методологии вёрстки на flexbox</p>
                 <img src="images/flexbox.jpg" alt="flexbox">
-                <a href="lessons/practic-2/flex.html"><div class="go-btn">Тык</div></a>
+                <a href="lessons/16/flex.html"><div class="go-btn">Тык</div></a>
               </div>
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-12 block">
@@ -97,6 +97,14 @@
                 <p>Полностью адаптивный сайт!</p>
                 <img src="images/adaptive.jpg" alt="adaptive">
                 <a href="lessons/17/adaptive.html"><div class="go-btn">Тык</div></a>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12 block">
+              <div class="block-content">
+                <h6>Меню на JS</h6>
+                <p>Всплывающее меню-гамбургер при помощи JQouery</p> 
+                <div class="hamburger-button"><span class="lesson-menu lesson-menu_active"></span></div>
+                <a href="lessons/19/menu.html"><div class="go-btn">Тык</div></a>
               </div>
             </div>
           </div>
@@ -109,5 +117,21 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+
+
+    <!--My scripts-->
+    <script>
+      $(document).ready(function(){
+          var menuButton = $('.lesson-menu')
+
+          menuButton.click(function(){
+            menuButton.toggleClass('lesson-menu_active')
+          });
+      });
+    </script>
   </body>
 </html>
