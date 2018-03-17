@@ -88,4 +88,49 @@ h1, h2, h3, h4, h5, h6, p {
 			background-color: #B3E5FC;
 		}
 	}
+	.hamburger-button {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		box-shadow: 1px 2px 10px rgba(0,0,0,.2);
+		margin-top: 15%;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		cursor: pointer;
+	}
+	.lesson-menu, .lesson-menu:before, .lesson-menu:after {
+		display: block;
+		height: 2px;
+		width: 18px;
+		position: absolute;
+		left: 50%;
+		margin-left: -9px;
+		top: 50%;
+		margin-top: -1px;
+		background-color: #333;
+	}
+	.lesson-menu:before {
+		transition: all 0.3s;
+		margin-top: -6px;
+		content: '';
+	}
+	.lesson-menu:after {
+		transition: all 0.3s;
+		margin-top: 4px;
+		content: '';
+	}
+	.lesson-menu_active {
+		background-color: transparent;
+		&:before {
+			transform: rotate(-135deg);
+			margin-top: 0;
+			transition: all 0.2s;
+		}
+		&:after {
+			transform: rotate(135deg);
+			margin-top: 0;
+			transition: all 0.2s;
+		}
+	}
 }
