@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Форма</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:700|Ubuntu:400,500&amp;subset=cyrillic-ext" rel="stylesheet">
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<div class="block">
+		<div class="left"><img src="images/image-top.png" alt="top"><img src="images/image-bot.png" alt="bot"></div>
+		<div class="right">
+			<h1>Сохрани свой аккаунт</h1>
+			<p class="top-text">Получи бесплатно неограниченное количество форм, вопросов и ответов</p>
+			<form id="form" action="thanks.html">
+				<input type="text" id="input-name" placeholder="Имя или никнейм">
+				<input type="email" id="input-phone" placeholder="Email">
+				<input type="password" id="input-email" placeholder="Пароль">
+			</form>
+			<button type="button" class="btn">Сохранить ></button>
+			<p class="account">Уже есть аккаунт?</p>
+			<a href="#">Войти</a>
+		</div>
+	</div>
+
+	<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+	<script src="js/jquery.maskedinput.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			var btn = $('.btn');
+
+			btn.click(function() {
+				var userName = $('#input-name').val(),
+					userEmail = $('#input-email').val(),
+					userPassword = $('#input-password').val(),
+					form = $('#form');
+
+				if (userName != '' && userPassword != '' && userEmail != '') {
+					form.submit();
+				} else {
+					alert('Не все поля заполнены!');
+				}
+			});
+		});
+	</script>
+</body>
+</html>

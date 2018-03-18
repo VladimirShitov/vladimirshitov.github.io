@@ -1,0 +1,109 @@
+body {
+	background: url(../images/bg.png);
+}
+
+.block {
+	background-color: #fff;
+	width: 70%;
+	display: block;
+	margin: 0 auto;
+	height: 80vh;
+	margin-top: 10vh;
+	border-radius: 2px;
+	.left {
+		text-align: center;
+		display: inline-block;
+		height: 100%;
+		width: 50%;
+		img {
+			display: block;
+			&[alt="top"] {
+				margin: 23% auto 5%;
+				width: 20%;
+			}
+			&[alt="bot"] {
+				margin: 0 auto;
+				width: 80%;
+			}
+		}
+	}
+	.right {
+		text-align: center;
+		display: inline-block;
+		width: 30%;
+		margin: 0 auto;
+		position: absolute;
+		h1 {
+			margin-top: 50px;
+			font-family: 'OpenSans', sans-serif;
+			color:  #000000;
+			font-size: 24px;/* Приближение из-за подстановки шрифтов */
+			font-weight: 700;
+			line-height: 45px;
+		}
+		p.top-text {
+			font-family: 'Ubuntu', sans-serif;
+			color:  #000000;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 22px;
+			margin-top: 0;
+			margin-bottom: 20px;
+		}
+		input {
+			display: block;
+			margin: 9px auto;
+			border: none;
+			border-bottom: 1px solid #888;
+			width: 80%;
+			height: 50px;
+			box-sizing: border-box;
+			padding-left: 30px;
+			&[type="text"] {
+				background: url(../images/icon-name.svg) no-repeat 2px center;
+			}
+			&[type="email"] {
+				background: url(../images/icon-email.svg) no-repeat 2px center;
+			}
+			&[type="password"] {
+				background: url(../images/icon-lock.svg) no-repeat 2px center;
+			}
+		}
+		button {
+			background-color:  #82c5c3;
+			width: 179px;
+			height: 53px;
+			border: none;
+			border-radius: 26px;
+			font-family: 'OpenSans', sans-serif;
+			color:  #ffffff;
+			font-size: 16px;
+			font-weight: 700;
+			line-height: 45px;
+			display: block;
+			margin: 20px auto 10px;
+		}
+		p.account {
+			display: inline-block;
+			font-family: 'Ubuntu', sans-serif;
+			color:  #000000;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 22px;
+			text-align: left;
+			margin: 0;
+		}
+		a {
+			font-family: 'Ubuntu', sans-serif;
+			color:  #f69a7a;
+			font-size: 14px;
+			weight: 500;
+			line-height: 22px;
+			text-decoration: none;
+			margin-left: 10px;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
