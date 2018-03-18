@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Tabs</title>
+	<link rel="stylesheet" href="styles/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=cyrillic-ext" rel="stylesheet">
+</head>
+<body>
+	<div class="block">
+		<div data-target="tab-content-1" class="tab tab-1 tab_active">Вопросы</div>
+		<div data-target="tab-content-2" class="tab tab-2">Жалоба</div>
+		<div data-target="tab-content-3" class="tab tab-3">Регистрация</div>
+		<hr>
+		<div class="tab-contents">
+			<div class="tab-content tab-content-1 visible">
+				<form action="" id="form-1">
+					<div class="row">
+						<div class="left-col">
+							<div class="name">
+								<h6>имя</h6>
+								<input type="text">
+							</div>
+							<div class="email">
+								<h6>email</h6>
+								<input type="email">
+							</div>
+							<div class="topic">
+								<h6>тема сообщения</h6>
+								<input type="text">
+							</div>
+						</div>
+						<div class="message right-col">
+							<h6>сообщение</h6>
+							<textarea></textarea>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="submit-btn">отправить сообщение</button>
+			</div>
+			<div class="tab-content tab-content-2 hidden">
+				<form action="" id="form-2">
+					<div class="row">
+						<div class="left-col">
+							<div class="name">
+								<h6>имя</h6>
+								<input type="text">
+							</div>
+							<div class="email">
+								<h6>email</h6>
+								<input type="email">
+							</div>
+							<div class="topic">
+								<h6>тема жалобы</h6>
+								<input type="text">
+							</div>
+						</div>
+						<div class="message right-col">
+							<h6>сообщение</h6>
+							<textarea></textarea>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="submit-btn">отправить жалобу</button>
+			</div>
+			<div class="tab-content tab-content-3 hidden">
+				<form action="" id="form-3">
+					<div class="row">
+						<div class="left-col">
+							<div class="name">
+								<h6>имя</h6>
+								<input type="text">
+							</div>
+							<div class="email">
+								<h6>email</h6>
+								<input type="email">
+							</div>
+							<div class="topic">
+								<h6>пароль</h6>
+								<input type="password">
+							</div>
+						</div>
+					</div>
+				</form>
+				<button type="button" class="submit-btn">регистрация</button>
+			</div>
+		</div>
+	</div>
+
+	<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+
+  <script>
+  	$(document).ready(function(){
+  		var tab = $('.tab'),
+  			activeTab = $('.tab_active');
+
+  		tab.click(function(){
+  			var target = $(this).attr('data-target');
+  			$('.tab-content').hide();
+  			$('.' + target).show();
+  			tab.removeClass('tab_active');
+  			$(this).addClass('tab_active');
+  		});
+  	});
+  </script>
+</body>
+</html>	
