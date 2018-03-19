@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="840px" height="480px" viewBox="0 0 840 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>simple-confirmation-popup-featured-new</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="13.9684862 23.238 18.168 33.378 18.17 33.38 10.958 36.448 6.44921752 25.7669727 0 32.03 0 0 23.182 23.238"></polygon>
+        <filter x="-133.7%" y="-79.6%" width="367.4%" height="270.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.201681386 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="simple-confirmation-popup-featured-new">
+            <polygon id="bg" fill="#404248" points="0 480 840 480 840 0 0 0"></polygon>
+            <g id="desktop" transform="translate(57.000000, 26.000000)">
+                <path d="M726,454 L0,454 L0,6 C0,2.687 2.687,0 6,0 L720,0 C723.313,0 726,2.687 726,6 L726,454 Z" id="container_bg" fill="#5C6C8D"></path>
+                <rect id="Rectangle" fill="#FFFFFF" x="226" y="140" width="274" height="164" rx="5"></rect>
+                <path d="M500,255 L500,299 C500,301.761424 497.761424,304 495,304 L231,304 C228.238576,304 226,301.761424 226,299 L226,255 L500,255 Z" id="Combined-Shape" fill="#BAD26E"></path>
+                <path d="M363,304 L231,304 C228.238576,304 226,301.761424 226,299 L226,255 L363,255 L363,304 Z" id="Combined-Shape" fill="#FE7065"></path>
+                <g id="dots" transform="translate(15.000000, 8.000000)" fill="#404248">
+                    <path d="M8,4 C8,6.209 6.209,8 4,8 C1.791,8 0,6.209 0,4 C0,1.791 1.791,0 4,0 C6.209,0 8,1.791 8,4" id="Fill-6"></path>
+                    <path d="M24,4 C24,6.209 22.209,8 20,8 C17.791,8 16,6.209 16,4 C16,1.791 17.791,0 20,0 C22.209,0 24,1.791 24,4" id="Fill-8"></path>
+                    <path d="M40,4 C40,6.209 38.209,8 36,8 C33.791,8 32,6.209 32,4 C32,1.791 33.791,0 36,0 C38.209,0 40,1.791 40,4" id="Fill-10"></path>
+                </g>
+                <g id="x" transform="translate(473.000000, 158.000000)" stroke="#8F9CB5" stroke-linecap="square" stroke-width="4">
+                    <path d="M0,0 L9.01086443,9.01086443" id="Line"></path>
+                    <path d="M9.01086443,0 L0,9.01086443" id="Line-Copy"></path>
+                </g>
+                <rect id="Rectangle-2" fill="#8F9CB5" x="298" y="197" width="130" height="13" rx="2"></rect>
+                <rect id="Rectangle-3" fill="#FFFFFF" x="270" y="274" width="50" height="9" rx="2"></rect>
+                <rect id="Rectangle-3-Copy" fill="#FFFFFF" x="407" y="274" width="50" height="9" rx="2"></rect>
+            </g>
+            <g id="default" transform="translate(389.000000, 315.000000)" fill-rule="nonzero">
+                <g id="Combined-Shape">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <polygon id="Shape" fill="#000000" points="15.502 32.018 11.814 33.566 5.614 18.818 9.296 17.268 15.502 32.018"></polygon>
+                <polygon id="Shape" fill="#000000" points="2 4.814 2 27.19 7.938 21.458 8.794 21.18 18.33 21.18"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
