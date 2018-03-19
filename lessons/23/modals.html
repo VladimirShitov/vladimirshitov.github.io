@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Всплывающие окна</title>
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<div class="header">
+		<div class="logo">News</div>
+		<a href="#register" class="register-btn">Авторизация</a>
+	</div>
+	<div class="block">
+		<h1>Читать статью</h1>
+		<img src="images/paper.png" alt="paper">
+	</div>
+	<a href="#close" class="modal-overlay"></a>
+	<div class="register-modal" id="register">
+		<a href="#close" class="close-modal">x</a>
+		<form id="form">
+			<input type="text" id="input-name" placeholder="Логин">
+			<input type="password" id="input-email" placeholder="Пароль">
+		</form>
+		<button type="button" class="btn">Войти ></button>
+	</div>
+	<div class="article-modal" id="article">
+		<a href="#close" class="close-modal">x</a>
+		<h1>Статья</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error doloribus consequatur est nesciunt repudiandae ea, officiis, dicta hic tenetur, eius porro quod, impedit totam! Ut cupiditate suscipit reprehenderit nostrum, veritatis dolorem expedita sed animi ad porro iusto dolor ipsa vel laborum hic quam dolorum eligendi illum! Reprehenderit ut at tenetur aliquam temporibus quidem eum est architecto aliquid labore delectus, non laudantium dolores debitis atque maxime unde ad quas iure laboriosam? Sed numquam deleniti iste ut pariatur illo aperiam a inventore, unde recusandae repudiandae nostrum quis tempore animi veritatis rerum voluptatum omnis aliquam repellat nobis eligendi esse dolor modi dignissimos. Inventore aperiam maxime, est fuga quisquam excepturi exercitationem nesciunt enim, voluptatibus recusandae porro corporis repellendus ducimus facilis eligendi rem sunt similique. Dolore possimus velit, ea veniam tenetur totam. Aut totam excepturi eius eveniet velit porro doloribus, accusamus. Reprehenderit ea, ut magnam natus odio. Voluptates, quibusdam. Incidunt saepe cupiditate repellat omnis minima, ab reprehenderit enim. Vel aspernatur, corporis natus veniam! Iure cupiditate tempora dignissimos, numquam distinctio sapiente consequuntur magni libero voluptate. Asperiores corporis placeat quos, tempora voluptates hic maxime, distinctio a, porro reiciendis cupiditate. Rerum, repellat! Animi saepe consectetur aliquid sunt amet ad cupiditate corporis ratione eos excepturi, aut atque necessitatibus voluptatem eligendi nostrum ipsam incidunt doloribus quis adipisci laudantium impedit distinctio modi. Inventore assumenda vero, sint repudiandae repellat, quia explicabo eaque nisi. Reiciendis optio nostrum placeat totam eveniet pariatur error, molestias, minus molestiae recusandae magni voluptates voluptatem quidem officiis dolores culpa amet quis dicta laudantium ipsam deserunt nihil iusto adipisci, voluptatibus impedit? Eaque error eos distinctio dignissimos nobis dolore, officia quia! Consequuntur quos sunt delectus, quo voluptatibus excepturi repellendus porro molestias commodi. Minus modi, ullam esse ad iusto distinctio. Sunt est veritatis harum eaque voluptatum labore maxime. Aspernatur amet, dolore autem quidem rerum. Sunt voluptas nobis quibusdam? Voluptatum labore saepe obcaecati odit sed eaque illum ipsa culpa iure voluptate atque, minima id alias impedit nostrum reiciendis, ipsum cum officia non perspiciatis esse. Architecto maiores, cum fuga perferendis vero, eum suscipit magni aliquam expedita rem, quo numquam sunt nulla. Temporibus odit eius ipsa. Esse voluptate assumenda deserunt impedit tenetur quis blanditiis fugit eligendi aut illum beatae molestiae vel id quos perferendis, minima est provident dolorem, totam labore officiis excepturi repellendus veniam. Atque corporis laboriosam, aliquam veritatis voluptatem rem at minus illo corrupti suscipit obcaecati fugiat unde repellat impedit! Ducimus et nam laboriosam dignissimos nostrum sunt sint, tempora illo minus nesciunt delectus voluptate?</p>
+	</div>
+
+	<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+	<script src="js/jquery.maskedinput.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			var btn = $('.btn')
+				link = $('.register-btn'),
+				regModal = $('.register-modal'),
+				artModal = $('.article-modal'),
+				close = $('.close-modal'),
+				overlay = $('.modal-overlay'),
+				img = $('img');
+
+			link.click(function(){
+				regModal.fadeIn();
+				overlay.fadeIn();
+			});
+
+			img.click(function(){
+				artModal.fadeIn();
+				overlay.fadeIn();
+			});
+
+			close.click(function(){
+				regModal.fadeOut();
+				artModal.fadeOut();
+				overlay.fadeOut();
+			});
+
+			overlay.click(function(){
+				regModal.fadeOut();
+				artModal.fadeOut();
+				overlay.fadeOut();
+			});
+
+
+			btn.click(function() {
+				var userName = $('#input-name').val(),
+					userEmail = $('#input-email').val(),
+					userPassword = $('#input-password').val(),
+					form = $('#form');
+
+				if (userName != '' && userPassword != '' && userEmail != '') {
+						regModal.fadeOut();
+						overlay.fadeOut();
+				} else {
+					alert('Не все поля заполнены!');
+				}
+			});
+		});
+	</script>
+</body>
+</html>
