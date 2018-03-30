@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Калькулятор</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <section id="main">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-sm-4">
+    				<div class="calc">
+    					<h2>Рассчет стоимости</h2>
+    					<label for="card_edition">Выберите тираж</label><br>
+    					<select class="form-control" name="edition" id="card_edition">
+    						<option value="90">90</option>
+    						<option value="120">120</option>
+    						<option value="150">150</option>
+    						<option value="180">180</option>
+    						<option value="210">210</option>
+    						<option value="240">240</option>
+    						<option value="270">270</option>
+    						<option value="300">300</option>
+    						<option value="360">360</option>
+    						<option value="420">420</option>
+    						<option value="510">510</option>
+    						<option value="600">600</option>
+    						<option value="900">900</option>
+    						<option value="1020">1020</option>
+    						<option value="1500">1500</option>
+    						<option value="3000">3000</option>
+    					</select>
+    					<br>
+    					<label for="card_paper">Выберите бумагу</label>
+    					<select name="card_paper" id="card_paper" class="form-control">
+    						<option data-paper-ratio="6.8" value="Мелованная бумага (белая)">Мелованная бумага (белая)</option>
+    						<option data-paper-ratio="40.5" value="Бумага повышенной белезны (SPLENDORGEL)">Бумага повышенной белезны (SPLENDORGEL)</option>
+    						<option data-paper-ratio="45" value="Prestige Лён (белый)">Prestige Лён (белый)</option>
+    					</select>
+    					<br>
+    					<label for="card_color">Выберите цветность</label>
+    					<select name="card_color" id="card_color" class="form-control">
+    						<option data-print="14" data-print-file="110" data-color="1" value="Односторонняя черно-белая">Односторонняя черно-белая</option>
+    						<option data-print="28" data-print-file="220" data-color="2" value="Двусторонняя черно-белая">Двусторонняя черно-белая</option>
+    						<option data-print="37" data-print-file="110" data-color="3" value="Односторонняя цветная">Односторонняя цветная</option>
+    						<option data-print="51" data-print-file="220" data-color="4" value="Цветная с лицевой, ч/б с оборотной">Цветная с лицевой, ч/б с оборотной</option>
+    						<option data-print="74" data-print-file="220" data-color="5" value="Двусторонняя цветная">Двусторонняя цветная</option>
+    					</select>
+    					<br>
+    					<h4>
+    						<small>Приблизительная</small> <br>
+    						Стоимость за тираж
+    					</h4>
+    					<p class="price">
+    						<span id="final_price">172.4</span>
+    						Руб.
+    					</p>
+    				</div>
+    			</div>
+    			<div class="col-sm-8">
+    				<div class="card-images text-center">
+    					<img src="img/1_0.png" alt="" id="card_1_0">
+    					<img src="img/1_1.png" alt="" id="card_1_1">
+    					<img src="img/4_0.png" alt="" id="card_4_0">
+    					<img src="img/4_1.png" alt="" id="card_4_1">
+    					<img src="img/4_4.png" alt="" id="card_4_4">
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+    	$(document).ready(function(){
+    		$('.calc select').change(function(){
+    			$edition = $('select#card_edition').val();
+    			$paper = $('select#card_paper').val();
+    			$color = $('select#card_color').val();
+    			$print_file = $('select#card_color option:selected').attr('data-print-file');
+    			$paper_ratio = $('select#card_paper option:selected').attr('data-paper-ratio');
+    			$color_format = $('select#card_color option:selected').attr('data-color');
+    			$print = $('select#card_color option:selected').attr('data-print');
+    			$division = 30;
+    			$final_edition = $edition / $division;
+    			$price = $final_edition * $paper_ratio + parseInt($print_file) + $final_edition*$print;
+    			console.log($price);
+    			$('span#final_price').text($price);
+
+                switch($color_format) {
+                    case '1':
+                        $('.card-images img').hide();
+                        $('#card_1_0').show();
+                        break; 
+                    case '2':
+                        $('.card-images img').hide(); 
+                        $('#card_1_1').show();  
+                        break; 
+                    case '3':
+                        $('.card-images img').hide(); 
+                        $('#card_4_0').show();
+                        break; 
+                    case '4':
+                        $('.card-images img').hide(); 
+                        $('#card_4_1').show();
+                        break; 
+                    case '5':
+                        $('.card-images img').hide(); 
+                        $('#card_4_4').show();
+                        break; 
+                    }    			
+    		})
+    	})
+    </script>	
+  </body>
+</html>
