@@ -1,0 +1,167 @@
+@Ubuntu: 'Ubuntu', sans-serif;
+
+.nav-bar {
+	height: 87px;
+	width: 100%;
+	text-align: right;
+	padding-top: 27px;
+	.menu {
+		display: inline-block;
+		list-style-type: none;
+		li {
+			display: inline-block;
+		}
+		a {
+			text-decoration: none;
+			font-family: @Ubuntu;
+			color:  rgba(45, 57, 76, 0.84);
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 47px;
+			text-transform: uppercase;
+			margin-left: 44px;
+			transition: all 0.2s;
+			&:hover {
+				color: rgb(84, 163, 218);
+			}
+		}
+	}
+}
+
+.block {
+	height: auto;
+	min-height: 600px;
+	background-color: rgb(84, 163, 218);
+	position: relative;
+	h1 {
+		font-family: @Ubuntu;
+		color:  #f7f6f2;
+		font-size: 52px;
+		font-weight: 700;
+		line-height: 72px;
+		text-align: left;
+		text-transform: uppercase;
+		margin-top: 35%;
+	}
+	h6 {
+		font-family: @Ubuntu;
+		color:  #ffffff;
+		font-size: 24px;
+		font-weight: 300;
+		font-style: italic;
+		line-height: 47px;
+		text-align: left;
+		margin-top: 3.7%;
+	}
+	p {
+		margin-top: 11.3%;
+		font-family: @Ubuntu;
+		color:  #f7f7f7;
+		font-size: 16px;/* Приближение из-за подстановки шрифтов */
+		font-weight: 500;
+		text-align: left;
+		display: block;
+		a {
+			text-transform: uppercase;
+			display: inline-block;
+			border-radius: 5px;
+			background-color:  #ffce54;
+			width: 57px;
+			height: 27px;
+			text-align: center;
+			color:  #f7f7f7;
+			&:hover {
+				text-decoration: none;
+				color: rgb(84, 163, 218);
+			}
+		}
+	}
+	input {
+		border-radius: 5px;
+		border: 1px solid rgba(255, 255, 255, 15);
+		background-color:  #ffffff;
+		width: 75%;
+		height: 54px;
+		margin-top: 13%;
+		padding-left: 6.6%;
+		margin-bottom: 35%;
+	}
+	.signup-btn {
+		border-radius: 5px;
+		background-color:  #77c344;
+		width: 113px;
+		height: 54px;
+		border: none;
+		margin-left: 2.5%;
+		font-family: @Ubuntu;
+		color:  #ffffff;
+		font-size: 18px;/* Приближение из-за подстановки шрифтов */
+		font-weight: 500;
+		cursor: pointer;
+	}
+	.right {
+		img {
+			position: absolute;
+			&[alt="hand"] {
+				bottom: 0%;
+				z-index: 1;
+			}
+			&[alt="phone"] {
+				left: 100px;
+				top: 70px;
+				z-index: 2;
+			}
+			&[alt="screen"] {
+				left: 121px;
+				top: 149px;
+				z-index: 3;
+			}
+			&[alt="cam"] {
+				left: 200px;
+				top: 80px;
+				z-index: 4;
+			}
+			&[alt="fingers"] {
+				left: 26px;
+				top: 339px;
+				z-index: 5;
+			}
+		}
+	}
+	.cloud {
+		position: absolute;
+		&-1 {
+			padding-top: 7%;
+			padding-left: 1%;
+		}
+		&-2 {
+			padding-top: 5%;
+			padding-left: 40.2%;
+		}
+		&-3 {
+			padding-top: 34.4%;
+			padding-left: 0%;
+		}
+		&-4 {
+			padding-top: 35.4%;
+    		padding-left: 30.3%;
+		}
+	}
+}
+
+.bot-bar {
+	height: 100px;
+	padding-top: 30px;
+}
+
+#scene {
+	position: relative;
+	height: 600px;
+}
+
+.parallax {
+	position: absolute;
+	height: auto;
+	min-height: 600px;
+	width: 70%;
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <title>TankApp</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="logo col-md-2"><img src="images/logo.png" alt="logo"></div>
+          <div class="links col-md-8">
+            <ul class="menu">
+              <li><a href="#">how it works</a></li>
+              <li><a href="#">about us</a></li>
+              <li><a href="#">contact us</a></li>
+              <li><a href="#">blog</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="container">
+        <div class="parallax"><div id="scene">
+                  <img src="images/cloud.png" alt="cloud" class="cloud cloud-1" data-depth="0.1">
+                  <img src="images/cloud.png" alt="cloud" class="cloud cloud-2" data-depth="0.2">
+                  <img src="images/cloud.png" alt="cloud" class="cloud cloud-3" data-depth="2">
+                  <img src="images/cloud.png" alt="cloud" class="cloud cloud-4" data-depth="1">
+                </div></div>
+        <div class="row">
+          <div class="left col-md-6">
+            <h1>track your next fuel shops</h1>
+            <h6>Monitor and Alert on all petrol bunks near to you</h6>
+            <p>Signup for <a href="#">free</a></p>
+            <input type="email" placeholder="Your E-mail Adress">
+            <button class="signup-btn">SIGNUP</button>
+          </div>
+          <div class="right col-md-6">
+            <img src="images/hand.png" alt="hand">
+            <img src="images/phone.png" alt="phone">
+            <img src="images/camera.png" alt="cam">
+            <img src="images/fingers.png" alt="fingers">
+            <img src="images/screen.png" alt="screen">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bot-bar">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+          <col-md-2><img src="images/logo-evernote.png" alt="evernote"></col-md-2>
+          <col-md-2><img src="images/logo-microsoft.png" alt="microsoft"></col-md-2>
+          <col-md-2><img src="images/logo-google.png" alt="google"></col-md-2>
+          <col-md-2><img src="images/logo-firefox.png" alt="firefox"></col-md-2>
+          <col-md-2><img src="images/logo-sony.png" alt="sony"></col-md-2>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <!--<script src="js/parallax.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+    <script>
+
+
+  // the onReady function is called as soon as Parallax knows what input method to use. This might take up to 1000ms (supportDelay * 2) after initialisation
+  var scene = document.getElementById('scene');
+  var parallax = new Parallax(scene, {});
+
+  </script>
+  </body>
+</html>
