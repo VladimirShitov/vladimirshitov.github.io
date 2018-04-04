@@ -45,8 +45,8 @@ p {
 	transition: all 0.5s;
 }
 
-.flex-item:hover {
-	height: 128%;
+.flex-item:hover, .long {
+	height: 56%;
 }
 
 .text {
