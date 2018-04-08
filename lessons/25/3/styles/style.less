@@ -1,0 +1,179 @@
+@font-face {
+font-family: 'Myriad Pro Regular';
+src: url('../fonts/MyriadPro-Regular.eot');
+src: url('../fonts/MyriadPro-Regular.eot?#iefix') format('embedded-opentype'),
+url('../fonts/MyriadPro-Regular.woff') format('woff'),
+url('../fonts/MyriadPro-Regular.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'Segoe UI Light';
+src: url('../fonts/SegoeUI-Light.eot');
+src: url('../fonts/SegoeUI-Light.eot?#iefix') format('embedded-opentype'),
+url('../fonts/SegoeUI-Light.woff') format('woff'),
+url('../fonts/SegoeUI-Light.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'Segoe UI Regular';
+src: url('../fonts/SegoeUI.eot');
+src: url('../fonts/SegoeUI.eot?#iefix') format('embedded-opentype'),
+url('../fonts/SegoeUI.woff') format('woff'),
+url('../fonts/SegoeUI.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'Segoe UI Bold';
+src: url('../fonts/SegoeUI-Bold.eot');
+src: url('../fonts/SegoeUI-Bold.eot?#iefix') format('embedded-opentype'),
+url('../fonts/SegoeUI-Bold.woff') format('woff'),
+url('../fonts/SegoeUI-Bold.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@Myriad: 'Myriad Pro Regular', sans-serif;
+
+a {
+	color: inherit;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.fix {
+	position: fixed;
+	z-index: 10;
+}
+
+.logo {
+	top: 15px;
+	left: 30px;
+}
+
+.menu {
+	top: 15px;
+	right: 30px;
+	list-style-type: none;
+	li {
+		display: inline-block;
+		text-align: right;
+		margin-left: 40px;
+		font-family: @Myriad;
+		color:  #ffffff;
+		font-size: 14px;
+		font-weight: 400;
+	}
+}
+
+.copyright {
+	bottom: 15px;
+	left: 30px;
+	font-family: 'Segoe UI Regular', sans-serif;
+	color:  #ffffff;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.contact {
+	bottom: 15px;
+	right: 30px;
+	font-family: 'Segoe UI Regular', sans-serif;
+	color:  #ffffff;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.parallax-container {
+	position: absolute;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%);
+	width: 40%;
+	z-index: -1;
+}
+
+.parallax-window {
+	height: 768px;
+	background: transparent;
+}
+
+.text {
+	position: absolute;
+	font-family: 'Segoe UI Bold', sans-serif;
+	color:  #ffffff;
+	font-size: 100px;
+	font-weight: 700;
+}
+
+.main-text {
+	position: absolute;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.left-text {
+	position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+}
+
+.right-text {
+	position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+    opacity: 0.4;
+}
+
+.block {
+	position: relative;
+	width: auto;
+	max-width: 100vw;
+	height: 768px;
+	overflow: hidden;
+}
+
+.block-1 {
+	background-color: rgb(204, 43, 35);
+	z-index: -100;
+}
+
+.block-2 {
+	background-color: rgb(28, 82, 56);
+	z-index: -100;
+}
+
+.block-3 {
+	background-color: rgb(149, 114, 76);
+	z-index: -100;
+}
+
+.block-4 {
+	background-color: rgb(123, 99, 121);
+	z-index: -100;
+}
+
+.top {
+	position: absolute;
+	z-index: 100000;
+	font-size: 60px;
+	color: #fff;
+	left: 40%;
+	top: 30%;
+}
+
+.bottom {
+	z-index: -9;
+}
