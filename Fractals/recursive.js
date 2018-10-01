@@ -23,7 +23,7 @@ function setup() {
 	saveBtn.class("savy");
 	saveBtn.mousePressed(canvasToPng);
 
-	seed = Math.random() / 2 * randSlider.value();
+	seed = Math.random() / 2;
 }
 
 function draw() {
@@ -42,13 +42,13 @@ function branch(len) {
 	translate(0, -len);
 	if (len > 4) {
 		push();
-		rotate(angle * koef + seed);
+		rotate(angle * koef + seed * randSlider.value());
 		branch(len * koef);
 		pop();
 
 		push();
 		rotate(-angle * koef);
-		branch(len * koef + seed);
+		branch(len * koef + seed * randSlider.value());
 		pop();
 	}
 }
@@ -57,7 +57,7 @@ function branch(len) {
 function mousePressed() {
 	let overCanvas = false;
 	if (mouseX < side && mouseY < side) overCanvas = true;
-	if (overCanvas) seed = Math.random() / 2  * randSlider.value();
+	if (overCanvas) seed = Math.random() / 2;
 }
 
 function canvasToPng() {
