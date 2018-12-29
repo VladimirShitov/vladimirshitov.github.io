@@ -136,7 +136,7 @@ function mousePressed() {
 }
 
 function canvasToPng() {
-	saveCanvas("fractal.png");
+	saveCanvas("life.png");
 }
 
 function create2DArray(rows) {
