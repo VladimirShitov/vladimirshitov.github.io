@@ -1,0 +1,46 @@
+.owl-carousel {
+    width: 100%;
+}
+
+/* to remove slide effect  css */
+ .animated  {
+  -webkit-animation-duration : 0 ms  !important;
+  animation-duration : 0 ms  !important;
+  -webkit-animation-fill-mode : both  !important;
+  animation-fill-mode : both  !important;
+}
+
+.fadeOut  {
+  -webkit-animation-name : fadeOut  ;
+  animation-name : fadeOut  ;
+}
+
+@-webkit-keyframes  fadeOut  {
+  0% {
+    opacity : 0   ;
+  }
+  100% {
+    opacity : 0   ;
+  }
+}
+
+@keyframes  fadeOut  {
+  0% {
+    opacity : 0   ;
+  }
+  100% {
+    opacity : 0   ;
+  }
+}
+
+.my-carousel img {
+    width: 100%;
+}
+
+.inactive {
+    display: none;
+}
+
+.active( {
+    display: block;
+}
