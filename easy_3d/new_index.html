@@ -30,7 +30,7 @@
 			<div class="col-lg-6 col-xs-12 my-carousel" id="debugging">
 				<p id="touch">Пока ничего не происходило</p>
 				<p id="x_coord">X: </p>
-				<p id="y_coord">Y: </p>
+				<p id="y_coord">Тут будет информация для дебаггинга </p>
 			</div>
 		</div>
 
@@ -69,6 +69,7 @@
 		}
 
 		run_carousel = function(e) {
+			y_text.innerText = "run_carousel did work. Touches: " + e.touches;
 			
 			event = (e.touches === undefined) ? e : e.touches[0];
 			
@@ -83,7 +84,6 @@
 				y = event.pageY;
 			}
 			x_text.innerText = "X: " + x;
-			y_text.innerText = "Y: " + y;
 		}
 
 		carousel.ondragstart = function() {
@@ -115,9 +115,6 @@
 		}
 
 		carousel.addEventListener("touchstart", handleTouchStart, false);
-
-
-
 
 	</script>
 
