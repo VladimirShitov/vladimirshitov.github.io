@@ -87,8 +87,8 @@
 
 		handleTouchStart = function(e) {
 			e.preventDefault();
-			x = e.pageX;
-			y = e.PageY;
+			x = e.touches[0].pageX;
+			y = e.touches[0].pageY;
 			carousel.addEventListener("touchmove", run_carousel, false);
 			document.addEventListener("touchend", function(e) {
 				carousel.removeEventListener("touchmove", run_carousel);
