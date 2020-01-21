@@ -62,12 +62,12 @@
 		run_carousel = function(e) {
 			event = (e.touches === undefined) ? e : e.touches[0];
 			// Photos are taken in the direction of clock rotation if you look at them from the top
-			if(event.pageX - x > OFFSET) {
+			if(x - event.pageX > OFFSET) {
 				change_image(true);
 				x = event.pageX;
 				y = event.pageY;
 			}
-			else if(x - event.pageX > OFFSET) {
+			else if(event.pageX - x > OFFSET) {
 				change_image(false);
 				x = event.pageX;
 				y = event.pageY;
