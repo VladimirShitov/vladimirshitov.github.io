@@ -27,11 +27,6 @@
 				<img src="materials/Животные/Лисяш/7.jpg" alt="7" class="my-carousel-img inactive">
 				<img src="materials/Животные/Лисяш/8.jpg" alt="8" class="my-carousel-img inactive">
 			</div>
-			<div class="col-lg-6 col-xs-12 my-carousel" id="debugging">
-				<p id="touch">Пока ничего не происходило</p>
-				<p id="x_coord">X: </p>
-				<p id="y_coord">Тут будет информация для дебаггинга </p>
-			</div>
 		</div>
 
 	</div> <!-- container -->
@@ -45,10 +40,6 @@
 		carousel = document.getElementById("my-carousel");
 		var x;
 		var y;
-		
-		var touch_p = document.getElementById("touch");
-		var x_text = document.getElementById("x_coord");
-		var y_text = document.getElementById("y_coord");
 
 		const OFFSET = 25;
 
@@ -69,10 +60,7 @@
 		}
 
 		run_carousel = function(e) {
-			y_text.innerText = "run_carousel did work. Touches: " + e.touches;
-			
 			event = (e.touches === undefined) ? e : e.touches[0];
-			
 			if(event.pageX - x > OFFSET) {
 				change_image(true);
 				x = event.pageX;
@@ -100,14 +88,9 @@
 		}
 
 		handleTouchStart = function(e) {
-			touch_p.innerText = "Тык произошёл";
 			e.preventDefault();
 			x = e.touches[0].pageX;
-			y = e.touches[0].pageY;
-			
-			x_text.innerText = "X: " + x;
-			y_text.innerText = "Y: " + y;
-			
+			y = e.touches[0].pageY;			
 			carousel.addEventListener("touchmove", run_carousel, false);
 			document.addEventListener("touchend", function(e) {
 				carousel.removeEventListener("touchmove", run_carousel);
