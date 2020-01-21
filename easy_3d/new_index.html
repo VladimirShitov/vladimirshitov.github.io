@@ -37,6 +37,11 @@
 		// carousel
 		var images = document.getElementsByClassName('my-carousel-img');
 		var i = 0;
+		carousel = document.getElementById("my-carousel");
+		var x;
+		var y;
+
+		const OFFSET = 25;
 
 		change_image = function(is_forward) {
 			current_image = images[i];
@@ -54,12 +59,18 @@
 			next_image.classList.add("active");
 		}
 
-		carousel = document.getElementById("my-carousel");
-
-		var x;
-		var y;
-
-		const OFFSET = 25;
+		run_carousel = function(e) {
+			if(e.pageX - x > OFFSET) {
+				change_image(true);
+				x = e.pageX;
+				y = e.pageY;
+			}
+			else if(e.pageX - x < -OFFSET) {
+				change_image(false);
+				x = e.pageX;
+				y = e.pageY;
+			}
+		}
 
 		carousel.ondragstart = function() {
 			return false;
@@ -68,25 +79,25 @@
 		carousel.onmousedown = function(e) {
 			x = e.pageX;
 			y = e.pageY;
-
-			carousel.onmousemove = function(e) {
-				if(e.pageX - x > OFFSET) {
-					change_image(true);
-					x = e.pageX;
-					y = e.pageY;
-				}
-				else if(e.pageX - x < -OFFSET) {
-					change_image(false);
-					x = e.pageX;
-					y = e.pageY;
-				}
-			}
-
+			carousel.onmousemove = function(e) { run_carousel(e) };
 			document.onmouseup = function() {
 				carousel.onmousemove = null;
 			}
-
 		}
+
+		handleTouchStart = function(e) {
+			e.preventDefault();
+			x = e.pageX;
+			y = e.PageY;
+			carousel.addEventListener("touchmove", run_carousel, false);
+			document.addEventListener("touchend", function(e) {
+				carousel.removeEventListener("touchmove", run_carousel);
+			}, false);
+		}
+
+		carousel.addEventListener("touchstart", handleTouchStart, false);
+
+
 
 
 	</script>
