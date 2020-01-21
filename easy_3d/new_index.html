@@ -69,15 +69,18 @@
 		}
 
 		run_carousel = function(e) {
-			if(e.pageX - x > OFFSET) {
+			
+			event = (e.touches === undefined) ? e : e.touches[0];
+			
+			if(event.pageX - x > OFFSET) {
 				change_image(true);
-				x = e.pageX;
-				y = e.pageY;
+				x = event.pageX;
+				y = event.pageY;
 			}
-			else if(e.pageX - x < -OFFSET) {
+			else if(event.pageX - x < -OFFSET) {
 				change_image(false);
-				x = e.pageX;
-				y = e.pageY;
+				x = event.pageX;
+				y = event.pageY;
 			}
 			x_text.innerText = "X: " + x;
 			y_text.innerText = "Y: " + y;
