@@ -34,17 +34,16 @@ carousel.onmousedown = function(e) {
 	y = e.pageY;
 
 	carousel.onmousemove = function(e) {
-		if(e.pageX - x > OFFSET) {
+		if(x - event.pageX > OFFSET) {
 			change_image(true);
-			x = e.pageX;
-			y = e.pageY;
+			x = event.pageX;
+			y = event.pageY;
 		}
-		else if(e.pageX - x < -OFFSET) {
+		else if(event.pageX - x > OFFSET) {
 			change_image(false);
-			x = e.pageX;
-			y = e.pageY;
+			x = event.pageX;
+			y = event.pageY;
 		}
-	}
 
 	document.onmouseup = function() {
 		carousel.onmousemove = null;
