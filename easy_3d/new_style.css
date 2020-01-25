@@ -1,36 +1,9 @@
-.owl-carousel {
-    width: 100%;
-}
-
-/* to remove slide effect  css */
- .animated  {
-  -webkit-animation-duration : 0 ms  !important;
-  animation-duration : 0 ms  !important;
-  -webkit-animation-fill-mode : both  !important;
-  animation-fill-mode : both  !important;
-}
-
-.fadeOut  {
-  -webkit-animation-name : fadeOut  ;
-  animation-name : fadeOut  ;
-}
-
-@-webkit-keyframes  fadeOut  {
-  0% {
-    opacity : 0   ;
-  }
-  100% {
-    opacity : 0   ;
-  }
-}
-
-@keyframes  fadeOut  {
-  0% {
-    opacity : 0   ;
-  }
-  100% {
-    opacity : 0   ;
-  }
+img.wrong-rotation {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .my-carousel img {
