@@ -50,5 +50,5 @@ carousel.onmousedown = function(e) {
 	document.onmouseup = function() {
 		carousel.onmousemove = null;
 	}
-
+	}
 }
