@@ -8,6 +8,7 @@ img.wrong-rotation {
 
 .my-carousel img {
     width: 100%;
+    image-orientation: from-image;
 }
 
 .inactive {
