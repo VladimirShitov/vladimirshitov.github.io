@@ -1,4 +1,6 @@
 // carousel
+console.log("carousel.js is loaded");
+
 var images = document.getElementsByClassName('my-carousel-img');
 var i = 0;
 
