@@ -33,7 +33,16 @@
 
 	<!-- <script src="jquery-3.4.1.min.js"></script> -->
 
-	<script src="carousel.js"></script>
+	<!-- <script src="carousel.js"></script> -->
+	
+	<script>
+		console.log("Page is loaded");
+		window.onload = function() {
+		    var carousel_script_tag = document.createElement("script");
+		    carousel_script_tag.src = "carousel.js";
+		    document.getElementsByTagName("head")[0].appendChild(carousel_script_tag);
+		};
+	</script>
 
 </body>
 </html>
