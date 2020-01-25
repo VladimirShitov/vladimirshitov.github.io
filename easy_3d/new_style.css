@@ -1,9 +1,9 @@
 img.wrong-rotation {
-  -webkit-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
   
+  -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
 }
 
