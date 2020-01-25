@@ -3,6 +3,11 @@ console.log("carousel.js is loaded");
 
 var images = document.getElementsByClassName('my-carousel-img');
 var i = 0;
+carousel = document.getElementById("my-carousel");
+var x;
+var y;
+
+const OFFSET = 25;
 
 change_image = function(is_forward) {
 	current_image = images[i];
@@ -20,12 +25,20 @@ change_image = function(is_forward) {
 	next_image.classList.add("active");
 }
 
-carousel = document.getElementById("my-carousel");
-
-var x;
-var y;
-
-const OFFSET = 25;
+run_carousel = function(e) {
+	event = (e.touches === undefined) ? e : e.touches[0];
+	// Photos are taken in the direction of clock rotation if you look at them from the top
+	if(x - event.pageX > OFFSET) {
+		change_image(true);
+		x = event.pageX;
+		y = event.pageY;
+	}
+	else if(event.pageX - x > OFFSET) {
+		change_image(false);
+		x = event.pageX;
+		y = event.pageY;
+	}
+}
 
 carousel.ondragstart = function() {
 	return false;
@@ -34,21 +47,20 @@ carousel.ondragstart = function() {
 carousel.onmousedown = function(e) {
 	x = e.pageX;
 	y = e.pageY;
-
-	carousel.onmousemove = function(e) {
-		if(x - event.pageX > OFFSET) {
-			change_image(true);
-			x = event.pageX;
-			y = event.pageY;
-		}
-		else if(event.pageX - x > OFFSET) {
-			change_image(false);
-			x = event.pageX;
-			y = event.pageY;
-		}
-
+	carousel.onmousemove = function(e) { run_carousel(e) };
 	document.onmouseup = function() {
 		carousel.onmousemove = null;
 	}
-	}
 }
+
+handleTouchStart = function(e) {
+	e.preventDefault();
+	x = e.touches[0].pageX;
+	y = e.touches[0].pageY;			
+	carousel.addEventListener("touchmove", run_carousel, false);
+	document.addEventListener("touchend", function(e) {
+		carousel.removeEventListener("touchmove", run_carousel);
+	}, false);
+}
+
+carousel.addEventListener("touchstart", handleTouchStart, false);
