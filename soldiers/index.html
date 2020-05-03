@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Battleship</title>
+        <meta charset='utf-8' />
+		 <!-- Bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<style>
+		canvas {
+			margin: 15px auto;
+		}
+		#info {
+			display: block;
+			margin: 15px auto;
+			text-align: center;
+		}
+	</style>
+
+	</head>
+	<body style='margin: 0;'>
+		<div class='container justify-content-center'>
+			<div class='row'>
+				<div class='col-12'>
+					<h6 id='info'>Добро пожаловать!</h6>
+					<canvas height='300' width='300' id='gameCanvas' style='display: block;'>Обновите браузер</canvas>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		
+			sleep = ms => {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			};
+			
+			drawSquareOnField = (x, y, code) => {
+				prevStrokeStyle = context.strokeStyle;
+				
+				context.beginPath();
+				context.fillStyle = COLORS[code];
+				context.fillRect(x*CELL_SIZE, y*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+				context.strokeStyle = '#E8F8F5';
+				context.lineWidth = 1;
+				context.strokeRect(x*CELL_SIZE, y*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+				context.closePath();
+				
+				context.strokeStyle = prevStrokeStyle;
+			};
+			
+			drawCircleOnField = (x, y, color='white') => {
+				prevStrokeStyle = context.strokeStyle;
+				
+				context.fillStyle = color;
+				context.strokeStyle = color;
+				context.beginPath();
+				context.arc(x*CELL_SIZE + CELL_SIZE/2, y*CELL_SIZE + CELL_SIZE/2, CELL_SIZE/4, 0, Math.PI*2);
+				context.fill();
+				context.stroke();
+				context.closePath();
+				
+				context.strokeStyle = prevStrokeStyle;
+			};
+			
+			drawLine = () => {
+				prevStrokeStyle = context.strokeStyle;
+				
+				context.beginPath();
+				context.strokeStyle = 'black';
+				context.lineWidth = 2;
+				context.moveTo(0, CANVAS_SIZE/2);
+				context.lineTo(CANVAS_SIZE, CANVAS_SIZE/2);
+				context.stroke();
+				context.closePath();
+				
+				context.strokeStyle = prevStrokeStyle;
+			};
+			
+			isNeighbour = (cell_1, cell_2) => {
+				return ((Math.abs(cell_1[0] - cell_2[0]) <= 1) && (Math.abs(cell_1[1] - cell_2[1]) <= 1))
+			};
+			
+			getPossiblePlayerMoves = position => {
+				moves = [];
+				for (let i=-1; i<2; i++) {
+					for (let j=-1; j<2; j++) {
+						if ((position[0]+i > -1) && 
+							(position[0]+i < N_CELLS) && 
+							(position[1]+j >= N_CELLS/2) && 
+							(position[1]+j < N_CELLS) &&
+							(i != 0 || j != 0) &&
+							(field[position[1]+j][position[0]+i] == 'empty') ) {
+								moves.push([position[0]+i, position[1]+j]);
+						};
+					}
+				}
+				return moves;
+			};
+			
+			getPossibleOpponentMoves = (position) => {
+				moves = [];
+				for (let i=-1; i<2; i++) {
+					for (let j=-1; j<2; j++) {
+						if ((position[0]+i > -1) && 
+							(position[0]+i < N_CELLS) && 
+							(position[1]+j > -1) && 
+							(position[1]+j < N_CELLS/2) &&
+							(i != 0 || j != 0) &&
+							(field[position[1]+j][position[0]+i] == 'empty') ) {
+								moves.push([position[0]+i, position[1]+j]);
+						};
+					}
+				}
+				return moves;
+			};
+			
+			getCellsToShootForPlayer = position => {
+				let x = position[0];
+				let y = position[1];
+				let moves = [];
+				
+				for(let col=0; col<N_CELLS/2; col++) {
+					if (field[col][x] != 'shot') {
+						moves.push([x, col]);
+					};
+				};
+				
+				for (let offset=0; offset < N_CELLS; offset++) {
+					// top left quadrant
+					if ((x-offset >= 0 ) && (y-offset >=0) && (y-offset < N_CELLS/2) && (field[y-offset][x-offset] != 'shot')) {
+						moves.push([x-offset, y-offset]);
+					};		
+					// top right quadrant
+					if ((x+offset < N_CELLS) && (y-offset >=0) && (y-offset < N_CELLS/2) && (field[y-offset][x+offset] != 'shot')) {
+						moves.push([x+offset, y-offset]);
+					}
+				};
+				
+				return moves;
+			};
+			
+			getCellsToShootForOpponent = position => {
+				let x = position[0];
+				let y = position[1];
+				let moves = [];
+				
+				for(let col=N_CELLS/2; col<N_CELLS; col++) {
+					if (field[col][x] != 'shot') {
+						moves.push([x, col]);
+					};
+				};
+				
+				for (let offset=0; offset < N_CELLS; offset++) {					
+					// bottom left quadrant
+					if ((x-offset >= 0 ) && (y+offset < N_CELLS) && (y+offset >= N_CELLS/2) && (field[y+offset][x-offset] != 'shot')) {
+						moves.push([x-offset, y+offset]);
+					}
+					
+					// bottom right quadrant
+					if ((x+offset < N_CELLS ) && (y+offset < N_CELLS) && (y+offset >= N_CELLS/2) && (field[y+offset][x+offset] != 'shot')) {
+						moves.push([x+offset, y+offset]);
+					}					
+				};
+				
+				return moves;
+			};
+			
+			isDrawSituation = () => {
+				playerMoves = getPossiblePlayerMoves(playerPosition);
+				opponentMoves = getPossibleOpponentMoves(opponentPosition);
+				playerShots = getCellsToShootForPlayer(playerPosition);
+				opponentShots = getCellsToShootForOpponent(opponentPosition);
+				
+				if (playerMoves || opponentMoves || opponentShots || playerShots) {
+					return true;
+				} else {
+					return false;
+				};
+			};
+			
+			playerShot = e => {
+				let moves = getCellsToShootForPlayer(playerPosition);
+				shotPosition = getCanvasCursorCoordinates(e, true);
+				
+				if (moves.length) {
+					
+					for (let i=0; i < moves.length; i++) { // Check all allowed moves
+						if ( (moves[i][0] == shotPosition[0]) && (moves[i][1] == shotPosition[1]) ) { // If player clicked cells which he can shoot to
+							moves.forEach( move => {
+								// Color every cell as they should look like
+								code = field[move[1]][move[0]];
+								code = (code = 'ship') ? 'empty' : code; // If cell contains ship don't draw it!
+								drawSquareOnField(move[0], move[1], code);
+							});
+							drawLine();
+							
+							if (field[shotPosition[1]][shotPosition[0]] == 'ship') {
+								drawSquareOnField(shotPosition[0], shotPosition[1], 'dead');
+								info.innerHTML = 'Игра закончена! Победа!';
+							}
+							else {
+								info.innerHTML = 'Промах! Ход противника';
+								drawCircleOnField(shotPosition[0], shotPosition[1]);
+								field[shotPosition[1]][shotPosition[0]] = 'shot';
+								opponentTurn();
+								canvas.removeEventListener('click', playerShot);
+							};
+							break;
+						};
+					}
+				} else {
+					info.innerHTML = 'Вы не можете двигаться! Ход противника';
+					sleepTime = 500;
+					opponentTurn();
+					canvas.removeEventListener('click', playerShot);					
+				};
+			};
+			
+			playerStep = e => {
+				newPosition = getCanvasCursorCoordinates(e, true);
+				if ( (newPosition[1] >= N_CELLS/2) && isNeighbour(playerPosition, newPosition) && (field[newPosition[1]][newPosition[0]] == 'empty') ){
+					let moves = getPossiblePlayerMoves(playerPosition);
+					moves.forEach( move => {
+						drawSquareOnField(move[0], move[1], field[move[1]][move[0]]);
+					});
+					
+					field[playerPosition[1]][playerPosition[0]] = 'passed';
+					drawSquareOnField(playerPosition[0], playerPosition[1], 'passed');
+					
+					playerPosition = newPosition;
+					field[playerPosition[1]][playerPosition[0]] = 'ship';
+					drawSquareOnField(newPosition[0], newPosition[1], 'ship');
+					
+					drawLine();
+					
+					info.innerHTML = 'Отлично! Теперь стреляй';
+
+					canvas.addEventListener('click', playerShot);
+					
+					moves = getCellsToShootForPlayer(playerPosition);
+					
+					moves.forEach( move => {
+							drawSquareOnField(move[0], move[1], 'tomove');
+						});
+						
+					drawLine();
+					
+					canvas.removeEventListener('click', playerStep);					
+				}
+			};
+		
+			let info = document.getElementById('info');
+		
+			const CANVAS_SIZE = 300;
+			const N_CELLS = 10;
+			const CELL_SIZE = CANVAS_SIZE/N_CELLS;
+			
+			let canvas = document.getElementById("gameCanvas");
+			let context = canvas.getContext('2d');
+			
+			const COLORS = {'empty':  '#5DADE2', 
+							'ship':   '#F1C40F', 
+							'passed': '#717D7E', 
+							'shot':   '#D6EAF8',
+							'tomove': '#AED6F1',
+							'dead':   '#F1948A'} 
+			
+			getCanvasCursorCoordinates = (event, returnIndexes) => {
+				const rect = canvas.getBoundingClientRect();
+				const x = event.clientX - rect.left;
+				const y = event.clientY - rect.top;
+				
+				if (returnIndexes) {
+					return [Math.floor(x/CELL_SIZE), Math.floor(y/CELL_SIZE)];
+				}
+				
+				return [x, y];
+			};
+			
+			// Set drawing settings
+			for (let i=0; i<N_CELLS; i++) {
+				for (let j=0; j<N_CELLS; j++) {
+					drawSquareOnField(i, j, 'empty');				
+				};
+			};
+			
+			drawLine();
+			
+			// Create array with states of game fields
+			let field = new Array(N_CELLS);
+			for (let i=0; i < N_CELLS; i++) {
+				field[i] = new Array(N_CELLS);
+				for (let j=0; j < N_CELLS; j++) {
+					field[i][j] = 'empty';
+				};
+			};
+			
+			// Generate player and opponent positions
+			playerPosition = [Math.floor(Math.random()*N_CELLS), Math.floor(N_CELLS/2 + Math.random()*N_CELLS/2)]; // Bottom half of the game field
+			opponentPosition = [Math.floor(Math.random()*N_CELLS), Math.floor(Math.random()*N_CELLS/2)]; // Top half of the game field
+			
+			// Draw the ship
+			field[opponentPosition[1]][opponentPosition[0]] = 'ship';
+			field[playerPosition[1]][playerPosition[0]] = 'ship';
+			drawSquareOnField(playerPosition[0], playerPosition[1], 'ship');
+			
+			async function playerTurn() {
+				info.innerHTML = 'Твой ход!';
+				let moves = getPossiblePlayerMoves(playerPosition);
+				if (moves.length) {
+					moves.forEach( move => {
+						drawSquareOnField(move[0], move[1], 'tomove');
+						drawLine();
+					canvas.addEventListener('click', playerStep);
+					});
+				} else {
+					if (isDrawSituation) {
+						info.innerHTML = 'Игра окончена! Ничья';
+						return;
+					};
+				
+					info.innerHTML = 'Возможных ходов не осталось. Стреляй!';
+					moves = getCellsToShootForPlayer(playerPosition);
+					moves.forEach( move => {
+							drawSquareOnField(move[0], move[1], 'tomove');
+						});
+					drawLine();
+					canvas.addEventListener('click', playerShot);
+				};
+			}
+			
+			async function opponentTurn() {
+				info.innerHTML = 'Противник делает свой ход';
+				await sleep(sleepTime);
+				
+				if (lastOpponentShot) {
+					drawCircleOnField(lastOpponentShot[0], lastOpponentShot[1]);
+				};
+			
+				// Moving
+				let moves = getPossibleOpponentMoves(opponentPosition);
+				if (moves.length) {
+					let move = moves[Math.floor(Math.random()*moves.length)]; // Select a random move from ones that are allowed
+					field[opponentPosition[1]][opponentPosition[0]] = 'passed';
+					field[move[1]][move[0]] = 'ship';
+					opponentPosition = move;
+				};
+				// Shooting
+				let shots = getCellsToShootForOpponent(opponentPosition);
+				
+				if (shots.length) {
+					let shot  = shots[Math.floor(Math.random()*shots.length)]; // Select a random shot
+					
+					if (field[shot[1]][shot[0]] == 'ship') {
+						drawSquareOnField(shot[0], shot[1], 'dead');
+						info.innerHTML = 'Игра закончена! Поражение...';
+						return;
+					}
+					else {
+						drawCircleOnField(shot[0], shot[1], COLORS['dead']);
+						lastOpponentShot = shot;
+						field[shot[1]][shot[0]] = 'shot';
+						playerTurn();
+					};
+				} else {
+					info.innerHTML = 'Противник не может сделать ход!';
+					await sleep(500);
+					playerTurn();
+				};
+				
+			};
+			
+			let lastOpponentShot;
+			let sleepTime = 1200;
+			
+			playerTurn();
+			
+		</script>
+	</body>
+</html>
