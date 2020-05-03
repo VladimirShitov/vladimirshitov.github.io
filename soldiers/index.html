@@ -316,6 +316,7 @@
 				} else {
 					if (isDrawSituation) {
 						info.innerHTML = 'Игра окончена! Ничья';
+						drawSquareOnField(opponentPosition[0], opponentPosition[1], 'ship');
 						return;
 					};
 				
@@ -354,6 +355,7 @@
 					if (field[shot[1]][shot[0]] == 'ship') {
 						drawSquareOnField(shot[0], shot[1], 'dead');
 						info.innerHTML = 'Игра закончена! Поражение...';
+						drawSquareOnField(opponentPosition[0], opponentPosition[1], 'ship');
 						return;
 					}
 					else {
