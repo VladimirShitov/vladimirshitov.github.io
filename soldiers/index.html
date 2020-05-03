@@ -172,9 +172,9 @@
 				opponentShots = getCellsToShootForOpponent(opponentPosition);
 				
 				if (playerMoves || opponentMoves || opponentShots || playerShots) {
-					return true;
-				} else {
 					return false;
+				} else {
+					return true;
 				};
 			};
 			
@@ -314,7 +314,7 @@
 					canvas.addEventListener('click', playerStep);
 					});
 				} else {
-					if (isDrawSituation) {
+					if (isDrawSituation()) {
 						info.innerHTML = 'Игра окончена! Ничья';
 						drawSquareOnField(opponentPosition[0], opponentPosition[1], 'ship');
 						return;
