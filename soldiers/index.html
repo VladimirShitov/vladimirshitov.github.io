@@ -3,6 +3,7 @@
 	<head>
 		<title>Battleship</title>
         <meta charset='utf-8' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- Bootstrap -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -22,8 +23,8 @@
 		<div class='container justify-content-center'>
 			<div class='row'>
 				<div class='col-12'>
-					<h6 id='info'>Добро пожаловать!</h6>
-					<canvas height='300' width='300' id='gameCanvas' style='display: block;'>Обновите браузер</canvas>
+					<h5 id='info'>Добро пожаловать!</h5>
+					<canvas height='400' width='400' id='gameCanvas' style='display: block;'>Обновите браузер</canvas>
 				</div>
 			</div>
 		</div>
@@ -261,12 +262,12 @@
 		
 			let info = document.getElementById('info');
 		
-			const CANVAS_SIZE = 300;
-			const N_CELLS = 10;
-			const CELL_SIZE = CANVAS_SIZE/N_CELLS;
-			
 			let canvas = document.getElementById("gameCanvas");
 			let context = canvas.getContext('2d');
+			
+			const CANVAS_SIZE = canvas.width;
+			const N_CELLS = 10;
+			const CELL_SIZE = CANVAS_SIZE/N_CELLS;
 			
 			const COLORS = {'empty':  '#5DADE2', 
 							'ship':   '#F1C40F', 
