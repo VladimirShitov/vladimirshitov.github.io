@@ -171,19 +171,18 @@
 				playerShots = getCellsToShootForPlayer(playerPosition);
 				opponentShots = getCellsToShootForOpponent(opponentPosition);
 				
-				if (playerMoves || opponentMoves || opponentShots || playerShots) {
+				if (playerMoves.length || opponentMoves.length || opponentShots.length || playerShots.length) {
 					return false;
 				} else {
 					return true;
 				};
 			};
 			
-			playerShot = e => {
+			async function playerShot(e) {
 				let moves = getCellsToShootForPlayer(playerPosition);
 				shotPosition = getCanvasCursorCoordinates(e, true);
 				
 				if (moves.length) {
-					
 					for (let i=0; i < moves.length; i++) { // Check all allowed moves
 						if ( (moves[i][0] == shotPosition[0]) && (moves[i][1] == shotPosition[1]) ) { // If player clicked cells which he can shoot to
 							moves.forEach( move => {
@@ -199,19 +198,41 @@
 								info.innerHTML = 'Игра закончена! Победа!';
 							}
 							else {
-								info.innerHTML = 'Промах! Ход противника';
+								info.innerHTML = 'Промах! Теперь ходи';
 								drawCircleOnField(shotPosition[0], shotPosition[1]);
 								field[shotPosition[1]][shotPosition[0]] = 'shot';
-								opponentTurn();
+								
+								moves = getPossiblePlayerMoves(playerPosition);
+								if (moves.length) {
+									moves.forEach(move => {
+										drawSquareOnField(move[0], move[1], 'tomove');
+									});
+									canvas.addEventListener('click', playerStep);
+								} else {
+									info.innerHTML = 'Ты не можешь ходить из этой позиции!';
+									await sleep(sleepTime);
+									opponentTurn();
+								};
 								canvas.removeEventListener('click', playerShot);
 							};
 							break;
 						};
 					}
 				} else {
-					info.innerHTML = 'Вы не можете двигаться! Ход противника';
-					sleepTime = 500;
-					opponentTurn();
+					info.innerHTML = 'Ты не можешь стрелять из этой позиции! Делай ход';
+					
+					moves = getPossiblePlayerMoves(playerPosition);
+					if (moves.length) {
+						moves.forEach(move => {
+							drawSquareOnField(move[0], move[1], 'tomove');
+						});
+						canvas.addEventListener('click', playerStep);
+					} else {
+						info.innerHTML = 'Ты не можешь ходить из этой позиции!';
+						await sleep(sleepTime);
+						opponentTurn();
+					};
+					
 					canvas.removeEventListener('click', playerShot);					
 				};
 			};
@@ -233,18 +254,7 @@
 					
 					drawLine();
 					
-					info.innerHTML = 'Отлично! Теперь стреляй';
-
-					canvas.addEventListener('click', playerShot);
-					
-					moves = getCellsToShootForPlayer(playerPosition);
-					
-					moves.forEach( move => {
-							drawSquareOnField(move[0], move[1], 'tomove');
-						});
-						
-					drawLine();
-					
+					opponentTurn();
 					canvas.removeEventListener('click', playerStep);					
 				}
 			};
@@ -305,13 +315,13 @@
 			drawSquareOnField(playerPosition[0], playerPosition[1], 'ship');
 			
 			async function playerTurn() {
-				info.innerHTML = 'Твой ход!';
-				let moves = getPossiblePlayerMoves(playerPosition);
+				info.innerHTML = 'Твой ход. Стреляй!';
+				let moves = getCellsToShootForPlayer(playerPosition);
 				if (moves.length) {
 					moves.forEach( move => {
 						drawSquareOnField(move[0], move[1], 'tomove');
 						drawLine();
-					canvas.addEventListener('click', playerStep);
+					canvas.addEventListener('click', playerShot);
 					});
 				} else {
 					if (isDrawSituation()) {
@@ -320,13 +330,19 @@
 						return;
 					};
 				
-					info.innerHTML = 'Возможных ходов не осталось. Стреляй!';
-					moves = getCellsToShootForPlayer(playerPosition);
-					moves.forEach( move => {
+					info.innerHTML = 'Ты не можешь стрелять из этой позиции. Делай ход!';
+					moves = getPossiblePlayerMoves(playerPosition);
+					if (moves.length) {
+						moves.forEach(move => {
 							drawSquareOnField(move[0], move[1], 'tomove');
 						});
-					drawLine();
-					canvas.addEventListener('click', playerShot);
+						drawLine();
+						canvas.addEventListener('click', playerStep);
+					} else {
+						info.innerHTML = 'Ты не можешь ходить из этой позиции!';
+						await sleep(sleepTime);
+						opponentTurn();
+					};
 				};
 			}
 			
@@ -338,14 +354,6 @@
 					drawCircleOnField(lastOpponentShot[0], lastOpponentShot[1]);
 				};
 			
-				// Moving
-				let moves = getPossibleOpponentMoves(opponentPosition);
-				if (moves.length) {
-					let move = moves[Math.floor(Math.random()*moves.length)]; // Select a random move from ones that are allowed
-					field[opponentPosition[1]][opponentPosition[0]] = 'passed';
-					field[move[1]][move[0]] = 'ship';
-					opponentPosition = move;
-				};
 				// Shooting
 				let shots = getCellsToShootForOpponent(opponentPosition);
 				
@@ -364,9 +372,20 @@
 						field[shot[1]][shot[0]] = 'shot';
 						playerTurn();
 					};
+				} else if (isDrawSituation()) {
+					info.innerHTML = 'Игра окончена! Ничья';
+					drawSquareOnField(opponentPosition[0], opponentPosition[1], 'ship');
+					return;
+				};
+	
+				// Moving
+				let moves = getPossibleOpponentMoves(opponentPosition);
+				if (moves.length) {
+					let move = moves[Math.floor(Math.random()*moves.length)]; // Select a random move from ones that are allowed
+					field[opponentPosition[1]][opponentPosition[0]] = 'passed';
+					field[move[1]][move[0]] = 'ship';
+					opponentPosition = move;
 				} else {
-					info.innerHTML = 'Противник не может сделать ход!';
-					await sleep(500);
 					playerTurn();
 				};
 				
