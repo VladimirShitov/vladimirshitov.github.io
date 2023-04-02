@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teleports and Circles</title>
+	<style>
+		canvas {
+			border: 1px solid black;
+			display: block;
+			margin: auto;
+		}
+
+		.centered {
+			text-align: center;
+		}
+
+		body {
+			font-family: Helvetica, sans-serif;
+			color: #444444;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="centered">Circles and Teleports</h1>
+	<div class="centered">
+		<label for="radius" class="centered">Circle radius:</label>
+		<input type="range" min="10" max="100" value="50" id="radius">
+	</div>
+	<br><br>
+	<canvas id="canvas" width="400" height="400"></canvas>
+	<script>
+		// Get canvas and slider elements
+		var canvas = document.getElementById("canvas");
+		var radiusSlider = document.getElementById("radius");
+		var dragging = false;  // is the teleport being dragged
+
+		// Get canvas context
+		var ctx = canvas.getContext("2d");
+
+		// Set initial circle radius and teleport locations
+		var radius = radiusSlider.value;
+		var teleports = [
+			{x: 100, y: 200},
+			{x: 300, y: 200},
+			{x: 200, y: 200}
+		];
+		
+		var draggingTeleport = false;
+		var teleportOffset = {x: 0, y: 0};
+
+		function getEquidistantPoints(x, y, radius, teleport = null) {
+			let circles = [];
+
+			var reachableCircles = [{ x: x, y: y, r: radius }];
+
+			while(reachableCircles.length > 0) {
+				circles.push(...reachableCircles);
+				let newCircles = [];
+
+				teleports.forEach(teleport => {
+					reachableCircles.forEach(circle => {
+						let distanceToTeleport = distance(circle.x, circle.y, teleport.x, teleport.y);
+
+						if(distanceToTeleport != 0 && distanceToTeleport < circle.r) {
+							// Add circles from all other teleports
+							teleports.forEach(anotherTeleport => {
+								if(teleport != anotherTeleport) {
+									newCircles.push({x: anotherTeleport.x, y: anotherTeleport.y, r: circle.r - distanceToTeleport});
+								}
+							});
+							
+						}
+					})
+				});
+
+				reachableCircles = newCircles;
+			};
+			
+			return circles;
+		}
+
+		canvas.addEventListener("mousedown", function(e) {
+			// Check if mouse is over a teleport
+			teleports.forEach(teleport => {
+				if (distance(e.offsetX, e.offsetY, teleport.x, teleport.y) <= 10) {
+					draggingTeleport = teleport;
+					teleportOffset.x = e.offsetX - teleport.x;
+					teleportOffset.y = e.offsetY - teleport.y;
+				}
+			});
+		});
+
+		canvas.addEventListener("mouseup", function(e) {
+			draggingTeleport = false;
+		});
+
+
+		// Add event listener to slider
+		radiusSlider.addEventListener("input", function() {
+			// Update radius variable and redraw circles
+			radius = this.value;
+			drawCircles();
+		});
+
+		// Add event listeners to canvas
+		canvas.addEventListener("mousemove", function(e) {
+			// Clear canvas and redraw circles with new position
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			if (draggingTeleport) {
+				teleports.forEach(teleport => {
+					if (draggingTeleport === teleport) {
+						teleport.x = e.offsetX - teleportOffset.x;
+						teleport.y = e.offsetY - teleportOffset.y;
+					};
+				});
+			}
+
+			drawCircles(e.offsetX, e.offsetY);
+		});
+
+		// Function to draw circles
+		function drawCircles(x, y) {
+			var circles = getEquidistantPoints(x, y, radius);
+
+			circles.forEach(circle => {
+				ctx.beginPath();
+				ctx.arc(circle.x, circle.y, circle.r, 0, 2*Math.PI);
+				ctx.stroke();
+			});
+
+			teleports.forEach(function(teleport1) {
+				// Draw teleport
+				ctx.fillStyle = "red";
+				ctx.beginPath();
+				ctx.arc(teleport1.x, teleport1.y, 10, 0, 2*Math.PI);
+				ctx.fill();
+			});
+
+		}
+
+		// Function to calculate distance between two points
+		function distance(x1, y1, x2, y2) {
+			var dx = x2 - x1;
+			var dy = y2 - y1;
+			return Math.sqrt(dx*dx + dy*dy);
+		}
+
+		// Call drawCircle function to initially draw circle
+		drawCircles();
+	</script>
+</body>
+</html>
